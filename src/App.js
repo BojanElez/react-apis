@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
+/***************************************************************************/
+/**Basics imports**/
+/***************************************************************************/
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+/***************************************************************************/
+/**Component imports**/
+/***************************************************************************/
+import Header from './components/Header';
+import WeatherApp from './components/weather/WeatherApp';
+import PaginationPage from './components/pagination/PaginationPage';
+import Infinite from './components/infiniteScroll/Infinite';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Header />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/weather" component={WeatherApp} />
+          <Route path="/pagination" component={PaginationPage} />
+          <Route path="/infinite" component={Infinite} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
+const Home = () => {
+  return (
+    <div>
+      <div className="container">
+        This is example react projects page
+      </div>
+    </div>
+  )
+}
+
 export default App;
+
+
